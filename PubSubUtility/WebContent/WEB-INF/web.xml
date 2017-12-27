@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>PubSubUtility</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+		
+<servlet>
+<servlet-name>dbconnection</servlet-name>
+<servlet-class>dbconnection</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>dbconnection</servlet-name>
+<url-pattern>dbconnection</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>dbedit</servlet-name>
+<servlet-class>dbedit</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>dbedit</servlet-name>
+<url-pattern>dbedit</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>dbnew</servlet-name>
+<servlet-class>dbnew</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>dbnew</servlet-name>
+<url-pattern>dbnew</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>dbemail</servlet-name>
+<servlet-class>dbemail</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>dbemail</servlet-name>
+<url-pattern>dbemail</url-pattern>
+</servlet-mapping>
+	
+	<resource-ref>
+    <description>Datasource connection to Db</description>
+    <res-ref-name>jdbc/mqconfig</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+     </resource-ref>
+	<resource-ref>
+		<description />
+
+		<res-ref-name>jms/HelloConnectionFactory</res-ref-name>
+		<res-type>javax.jms.QueueConnectionFactory</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<message-destination-ref>
+		<description />
+
+		<message-destination-ref-name>
+			jms/Response_HelloQueue
+		</message-destination-ref-name>
+		<message-destination-type>
+			javax.jms.Queue
+		</message-destination-type>
+		<message-destination-usage>Produces</message-destination-usage>
+		<message-destination-link />
+	</message-destination-ref>
+
+	
+</web-app>
